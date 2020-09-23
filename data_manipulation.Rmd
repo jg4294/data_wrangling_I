@@ -112,10 +112,18 @@ mutate(
   litters_df, 
     wt_gain = gd18_weight - gd0_weight, 
     group = str_to_lower(group))
-  
-  
 ```
 
+## arrange
+In arrange, the goal here is to put things in order.
+
+```{r}
+arrange(litters , pups_born_alive) #show the output based on the order of pup-born_alive, from small to large
+```
+
+```{r}
+arrange(litters , pups_born_alive, gd0_weight)# first order by pups_born_alive, and then, witin that, order each level by gd0_weight
+```
 
 
 
