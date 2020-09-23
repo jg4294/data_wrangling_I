@@ -1,21 +1,56 @@
 ---
-title: "Simple document"
-output: html_document
+title: "Data Import"
+output: github_document
 ---
 
-I'm an R Markdown document! 
+# we focus on readr package.
 
-# Section 1
+```{r setup}
+library(tidyverse) 
 
-Here's a **code chunk** that samples from 
-a _normal distribution_:
-
-```{r}
-samp = rnorm(100)
-length(samp)
 ```
 
-# Section 2
+## Read in some data
 
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
+Read in the litters dataset.
+
+```{r}
+litters_df = read_csv("./data/FAS_litters.csv") 
+# read_csv is a fucntion in reader package
+# give a relative path "./data/FAS_litters.csv"
+# starting here "data_wrangling_i" go into the data folder and go into fas litters.csv
+# absolute path would be starting from the really begin of your computer, says the desktop
+
+litters_df # take a look
+
+# overwrite the original dataset: clean_names() with a transformed version
+# janitor::clean_names() means in the janitor package, use function clean_names(); or we can load the package by library(janitor), but we're not, b/c clean_names() is the only function we use.
+litters_df = janitor::clean_names(litters_df)
+
+```
+
+## Take a look at the data
+
+Printing in the console
+
+```{r}
+litters_df  # variables names are overwritten nicely by snake case with no special characters
+
+```
+
+```{r}
+head(litters_df)
+```
+
+```{r}
+tail(litters_df) # check the tail of the dataset
+```
+
+```{r}
+skimr::skim(litters_df) # we wanna use the skim() function inside of the package "skimr"
+# this is a little bit gimmicky, b/c it's sth cool when u check it out and then u almost end up never use it in practice
+```
+
+in the console, we type View(litters_df)
+
+dbl means double, it's a particular kind of number in cs and progamming
