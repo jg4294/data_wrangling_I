@@ -104,6 +104,17 @@ filter(litters_df, group %in% c("Mod8", "Con7"))
 ```
 
 
+## mutate
+It allows us either to modify an exising variable or create some new variable
+
+```{r}
+mutate(
+  litters_df, 
+    wt_gain = gd18_weight - gd0_weight, 
+    group = str_to_lower(group))
+  
+  
+```
 
 
 
