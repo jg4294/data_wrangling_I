@@ -118,11 +118,31 @@ mutate(
 In arrange, the goal here is to put things in order.
 
 ```{r}
-arrange(litters , pups_born_alive) #show the output based on the order of pup-born_alive, from small to large
+arrange(litters_df , pups_born_alive) #show the output based on the order of pup-born_alive, from small to large
 ```
 
 ```{r}
-arrange(litters , pups_born_alive, gd0_weight)# first order by pups_born_alive, and then, witin that, order each level by gd0_weight
+arrange(litters_df , pups_born_alive, gd0_weight)# first order by pups_born_alive, and then, witin that, order each level by gd0_weight
+```
+
+## %>%
+
+```{r}
+litters_data_raw = read_csv("./data/FAS_litters.csv", col_types = "ccddiiii") 
+litters_clean_name = janitor::clean_names(litters_data_raw) 
+litters_data_selected = select(litters_clean_name, -pups_survive)
+litters_mutated = mutate(litters_data_selected,wt_gain = gd18_weight - gd0_weight)
+litters_without_missing = drop_na(litters_mutated, gd0_Weight)
+```
+
+Use the Pip operate Instead
+```{r}
+litters_data = 
+  read_csv("./data/FAS_litters.csv") %>%
+  janitor::clean_names() %>%
+  select(-pups_survive) %>%
+  mutate(wt_gain = gd18_weight - gd0_weight) %>% 
+  drop_na(wt_gain)
 ```
 
 
