@@ -103,4 +103,13 @@ litters_readr # this is better
 
 ```
 
+## Exporting data
+
+Export the mlb sub-table.
+
+```{r}
+write_csv(mlb_df,"./data/mlb_subtable.csv") 
+# we export the tables from mlb_df to the folder "data".
+```
+
 
