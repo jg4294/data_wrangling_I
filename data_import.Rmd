@@ -6,7 +6,9 @@ output: github_document
 # we focus on readr package.
 
 ```{r setup}
-library(tidyverse) 
+library(tidyverse)
+library(readxl) # for other file format: excel
+library(haven) # for other file format: SAS
 
 ```
 
@@ -66,4 +68,26 @@ litters_df = read_csv("./data/FAS_litters.csv", skip = 10, col_names = FALSE)
 # na = c("", "NA", ".", 999) means anytime if u see these, treat as a missing value
 # col_type
 ```
+
+## Other file formats
+
+##### Read in an excel file.
+
+```{r}
+#read_excel() in the package "readxl"
+mlb_df = read_excel("./data/mlb11.xlsx", range  = "A1:F7") 
+mlb_df
+```
+
+In the console, type:
+View(mlb_df) # to look the full data set
+?read_excel # the help file
+
+##### Read in a SAS file
+
+```{r}
+pulse_df = read_sas("./data/public_pulse_data.sas7bdat")
+pulse_df
+```
+
 
