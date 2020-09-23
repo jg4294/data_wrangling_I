@@ -67,8 +67,41 @@ select(litters_df, litter_number, everything())
 relocate(litters_df, litter_number)
 ```
 
+## filter
+It's intended to remove rows or keep rows that u are interested in retainning for some subsequent analysis.So select every single row every time we did, it just reduced or changed or reorganized the columns. Select operates on columns filter now is gonna operate on rows.
 
+```{r}
+filter(litters_df, gd0_weight < 22)
+# we get only 8 obs out of the original 48 rows for which gestational day zer weight is less than 22. It's kept all my other columns.
 
+```
+
+```{r}
+filter(litters_df, gd0_weight >= 22) #26 rows
+
+```
+
+```{r}
+filter(litters_df, gd_of_birth == 20)
+```
+
+```{r}
+filter(litters_df, !(gd_of_birth == 20))
+filter(litters_df, gd_of_birth != 20) #these 2 are the same
+```
+
+```{r}
+filter(litters_df, gd0_weight >= 22, gd_of_birth == 20) # select obs based on 2 conditions 
+```
+
+```{r}
+filter(litters_df, group == "Mod8") #for character var
+```
+
+```{r}
+filter(litters_df, group %in% c("Mod8", "Con7")) 
+# use %in%, select obs based on variable 'group' where group is equal either to Mod8 or Con7
+```
 
 
 
