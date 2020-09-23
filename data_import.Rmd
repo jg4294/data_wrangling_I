@@ -51,6 +51,19 @@ skimr::skim(litters_df) # we wanna use the skim() function inside of the package
 # this is a little bit gimmicky, b/c it's sth cool when u check it out and then u almost end up never use it in practice
 ```
 
-in the console, we type View(litters_df)
+in the console, we type View(litters_df) to open a new window to look at the full dataset.
 
-dbl means double, it's a particular kind of number in cs and progamming
+dbl means double, it's a particular kind of number in cs and programming
+
+## Options to read_csv
+Additional options to the read_csv() function.
+?read_csv in the console to look at the help file on the right.
+
+```{r}
+litters_df = read_csv("./data/FAS_litters.csv", skip = 10, col_names = FALSE) 
+# skip = 10, means skip the first 10 rows
+# col_names = FALSE, means make up column names as X1 to X8 
+# na = c("", "NA", ".", 999) means anytime if u see these, treat as a missing value
+# col_type
+```
+
