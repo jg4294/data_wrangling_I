@@ -14,3 +14,64 @@ litters_df = read_csv("./data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 ```
 
+## 'select'
+
+choose some columns and not others
+
+What we wanna keep:
+
+```{r}
+# we select 2 columns 'group' and 'litter_number'.
+select(litters_df, group, litter_number) 
+```
+
+```{r}
+# select a range of column 'from gd0_weight to gd_of_birth' and the column 'group'
+select(litters_df, group, gd0_weight:gd_of_birth)
+```
+
+What we wnna lose:
+
+```{r}
+# this only get rid of the column 'litter_number'
+select(litters_df, -litter_number)
+```
+
+Renaming columns while selecting...
+
+```{r}
+select(litters_df, GROUP = group, LITTer_NUmBER = litter_number)
+```
+
+Rename only, keep all the var. columns
+
+```{r}
+rename(litters_df, GROUP = group, LITTer_NUmBER = litter_number)
+```
+
+Select helper:
+?select_helpers (type in the console)
+
+```{r}
+#select everything that starts with gd
+select(litters_df, starts_with("gd"))
+```
+
+```{r}
+# move the litter_number to the first column, and then the rest of columns
+select(litters_df, litter_number, everything())
+```
+
+```{r}
+# reloate() does the same thing above, move litter_number to the beginning
+relocate(litters_df, litter_number)
+```
+
+
+
+
+
+
+
+
+
